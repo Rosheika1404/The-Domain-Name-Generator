@@ -1,16 +1,41 @@
-let pronoun = ["the", "our"];
-let adj = ["great", "big"];
-let noun = ["jogger", "racoon"];
+let prefix = "www."
+let pronoun = ["the", "our", "this", "that", "your"];
+let adj = ["great", "big", "adventurous","amused", "enthusiastic"];
+let noun = ["jogger", "racoon", "family", "person", "story", "player", "physics"];
+let extension = [".com", ".co", ".io", ".net"]
 
-let generateDomain = () => {
-  let arr = [];
+// function to generate random number
+const getRandomNumber = (max) => Math.floor(Math.random()*max);
 
-  for (let i = 0; i < pronoun.length; i++) {
-    for (let j = 0; j < adj.length; j++) {
-      for (let k = 0; k < noun.length; k++) {
-        arr.push("www." + pronoun[i] + adj[j] + noun[k] + ".com");
-      }
-    }
-  }
-  document.querySelector("#domain").innerHTML = arr;
-};
+// function to generate grab that word from the arrays and ling them together
+const generateWebDomain = () =>
+`${prefix}${pronoun[getRandomNumber(pronoun.length)]}${adj[getRandomNumber(adj.length)]}${noun[getRandomNumber(noun.length)]}${extension[getRandomNumber(extension.length)]}`;
+console.log (generateWebDomain());
+  
+// function to link the created domains to the html 
+const generateDomain = () => {
+document.querySelector("#domain").innerHTML = generateWebDomain();
+}
+
+// activate the button to change domains on click `
+document.querySelector("button").addEventListener('click', generateDomain);
+
+generateDomain();
+
+
+
+
+ 
+
+// let generateWebDomain = () => {
+//   let genDomain = " ";
+//   for (let i = 0; i < pronoun.length; i++) {
+//     for (let j = 0; j < adj.length; j++) {
+//       for (let k = 0; k < noun.length; k++) {
+//         genDomain+="www." + pronoun[i] + adj[j] + noun[k] + ".com" ;
+//       }
+//     }
+//   }
+//   document.querySelector("#domain").innerHTML = genDomain();
+// };
+ 
